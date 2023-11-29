@@ -55,10 +55,8 @@ Dataset sudah bebas dari nilang kosong dan juga inconsistent value, hanya terdap
 
 ## Exploratory Data Analysis (EDA)
 Gambar 2. Visualisasi bagian I
-![Visualisasi bagian I](https://drive.google.com/file/d/1hmWprjL3SpYwvdX8ZGTqe416tnzxug-Z/view?usp=sharing)
 
 Gambar 3. Visualisasi bagian II
-![Visualisasi bagian II](https://drive.google.com/file/d/1o3hOysQb3CWQ3UjL5Cpf8WRbmfUPy4Nw/view?usp=sharing)
 
 Berdasarkan visualisasi pada Gambar 2 dan 3, diperoleh temuan:
 1. Usia pasien cukup menyebar rata mulai dari 18 hingga lebih dari 60 tahun. Namun pasien dengan usia 18 tahun berjumlah 160 yang membuat distribusi usia pasien menceng ke kanan.
