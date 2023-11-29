@@ -35,7 +35,7 @@ Sedangkan untuk rumah sakit, dapat membantu:
 - Memanfaatkan RMSE sebagai metrik evaluasi untuk mengukur seberapa baik performa model dalam memprediksi biaya pengobatan 
 
 ## Data Understanding
-Proyek ini menggunakan dataset dari Kaggle yang berjudul [Medical Cost Performance Dataset](https://www.kaggle.com/datasets/mirichoi0218/insurance?resource=download) dengan jumlah baris 1337 dan fitur yang dimiliki yaitu:
+Proyek ini menggunakan dataset dari Kaggle yang berjudul [Medical Cost Performance Dataset](https://www.kaggle.com/datasets/mirichoi0218/insurance?resource=download) dengan jumlah baris 1337 dan fitur yang dimiliki sebagaimana yang tercantum pada Tabel 1 berikut.
 
 Tabel 1. Informasi variabel pada dataset
 | **Nama variabel** | **Keterangan** |
@@ -54,11 +54,13 @@ Gambar 1. Korelasi antar variabel
 Dataset sudah bebas dari nilang kosong dan juga inconsistent value, hanya terdapat 1 nilai duplikat yang kemudian dihilangkan. Setelah melalui tahapan Data Cleaning, dilakukan eksplorasi lebih dalam lagi salah satunya dengan melihat korelasi antar variabel. Berdasarkan Gambar 1, dapat diamati hubungan antar variabel lemah dengan skor korelasi kurang dari 0.3. Variabel charges dan smoker memiliki skor korelasi tertinggi di antara variabel lainnya, yaitu 0.79 yang menandakan adanya hubungan positif kuat antara keduanya. Pemilihan age, sex, bmi, children, dan smoker sebagai variabel prediktor juga mengacu pada penelitian yang dilakukan oleh [2], hal pembedanya pada proyek ini terdapat 1 tambahan variabel prediktor yaitu wilayah.
 
 ## Exploratory Data Analysis (EDA)
-Gambar 2. 
+Gambar 2. Visualisasi bagian I
+![Visualisasi bagian I](https://drive.google.com/file/d/1hmWprjL3SpYwvdX8ZGTqe416tnzxug-Z/view?usp=sharing)
 
-Gambar 3. 
+Gambar 3. Visualisasi bagian II
+![Visualisasi bagian II](https://drive.google.com/file/d/1o3hOysQb3CWQ3UjL5Cpf8WRbmfUPy4Nw/view?usp=sharing)
 
-Berdasarkan visualisasi pada gambar di atas, diperoleh temuan:
+Berdasarkan visualisasi pada Gambar 2 dan 3, diperoleh temuan:
 1. Usia pasien cukup menyebar rata mulai dari 18 hingga lebih dari 60 tahun. Namun pasien dengan usia 18 tahun berjumlah 160 yang membuat distribusi usia pasien menceng ke kanan.
 2. Perokok didominasi oleh lelaki, lalu proporsi perokok dan non perokok yaitu 20.5% dibanding 79.5%
 3. Sebanyak 573 pasien tidak memiliki tanggungan anak, lalu disusul oleh pasien dengan tanggungan 1 anak, 2 anak, 3 anak, 4 anak, dan terakhir 5 anak
