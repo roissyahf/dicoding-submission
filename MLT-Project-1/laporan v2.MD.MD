@@ -50,17 +50,13 @@ Tabel 1. Informasi variabel pada dataset
 
 Gambar 1. Korelasi antar variabel
 
+
 Dataset sudah bebas dari nilang kosong dan juga inconsistent value, hanya terdapat 1 nilai duplikat yang kemudian dihilangkan. Setelah melalui tahapan Data Cleaning, dilakukan eksplorasi lebih dalam lagi salah satunya dengan melihat korelasi antar variabel. Berdasarkan Gambar 1, dapat diamati hubungan antar variabel lemah dengan skor korelasi kurang dari 0.3. Variabel charges dan smoker memiliki skor korelasi tertinggi di antara variabel lainnya, yaitu 0.79 yang menandakan adanya hubungan positif kuat antara keduanya. Pemilihan age, sex, bmi, children, dan smoker sebagai variabel prediktor juga mengacu pada penelitian yang dilakukan oleh [2], hal pembedanya pada proyek ini terdapat 1 tambahan variabel prediktor yaitu wilayah.
 
 ## Exploratory Data Analysis (EDA)
 Gambar 2. 
 
 Gambar 3. 
-
-
-[Visualisasi bagian I](https://drive.google.com/file/d/1hmWprjL3SpYwvdX8ZGTqe416tnzxug-Z/view?usp=sharing)
-
-[Visualisasi bagian II](https://drive.google.com/file/d/1o3hOysQb3CWQ3UjL5Cpf8WRbmfUPy4Nw/view?usp=sharing)
 
 Berdasarkan visualisasi pada gambar di atas, diperoleh temuan:
 1. Usia pasien cukup menyebar rata mulai dari 18 hingga lebih dari 60 tahun. Namun pasien dengan usia 18 tahun berjumlah 160 yang membuat distribusi usia pasien menceng ke kanan.
@@ -77,6 +73,7 @@ Temuan tersebut menghasilkan kesimpulan, variabel smoker, dan BMI berpengaruh te
 - Lalu dilakukan pemisahan antara X yang merupakan variabel prediktor: age, sex, bmi, children, smoker, region dan y yang merupakan variabel target: charges.
 
 Gambar 4. Distribusi variabel charges sebelum dan sesudah transformasi log
+
 
 - Berdasarkan Gambar 4, terlihat variabel charges menceng ke kanan maka perlu dilakukan transformasi logaritma untuk memperbaiki distribusi data. Transformasi logaritma dapat membantu untuk mengurangi dampak nilai-nilai outlier tersebut, sehingga model dapat bekerja lebih baik. 
 - Memisahkan data ke dalam training set untuk melatih model, dan test set untuk mengevaluasi model dengan rasio 0.75:0.25
@@ -96,6 +93,7 @@ Berdasarkan Tabel 2, Gradient Boosting Regressor (GBR) menjadi model terbaik kar
 Dari 6 variabel prediktor yang digunakan, dengan menggunakan feature importance pada model GBR ditemukan bahwasannya variabel smoker paling berpengaruh terhadap model sengan skor importance sebesar 0.494253, lalu disusul oleh variabel age dengan skor importance 0.387697. Variabel bmi, children, region, sex hanya berkontribusi kecil dalam memprediksi biaya pengobatan sebagaimana yang dapat diamati pada Gambar 5.
 
 Gambar 5. Feature Importance pada model Gradient Boosting Regressor
+
 
 Selanjutnya, dilakukan hyperparameter tuning terhadap model Gradient Boosting Regressor dengan memanfaatkan GridSearchCV untuk mencari parameter terbaik dari serangkaian kombinasi yang dicoba dari dictionary berikut:
 ```
@@ -129,6 +127,7 @@ Setelah pemilihan model terbaik dari ketiga model yang diusulkan, diperoleh mode
 - Gradient Boosting Regressor menjadi model terbaik dibandingkan Random Forest Regressor dan Linear Regression karena dihasilkan RMSE terkecil yaitu 0.4774 dan skor determinasi terbesar yaitu 0.8726.
 
 Referensi:
-[[1]](https://doi.org/10.1371/journal.pone.0279540) Langenberger B, Schulte T, Groene O. "The application of machine learning to predict high-cost patients: A performance-comparison of different models using healthcare claims data," PLoS ONE, vol. 18(1), 2023
+
+[[1]](https://doi.org/10.1371/journal.pone.0279540) Langenberger B, Schulte T, Groene O. "The application of machine learning to predict high-cost patients: A performance-comparison of different models using healthcare claims data," PLoS ONE, vol. 18(1), 2023.
 
 [[2]](https://doi.org/10.1155/2022/7969220) Ahmed I. Taloba, Rasha M. Abd El-Aziz, Huda M. Alshanbari, Abdal-Aziz H. El-Bagoury, "Estimation and Prediction of Hospitalization and Medical Care Costs Using Regression in Machine Learning", Journal of Healthcare Engineering, vol. 2022, 2022.
