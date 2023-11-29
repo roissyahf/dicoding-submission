@@ -128,7 +128,7 @@ Setelah pemilihan model terbaik dari ketiga model yang diusulkan, diperoleh mode
 - Variabel smoker, age, dan bmi berkontribusi besar dalam memprediksi biaya pengobatan.
 - Gradient Boosting Regressor menjadi model terbaik dibandingkan Random Forest Regressor dan Linear Regression karena dihasilkan RMSE terkecil yaitu 0.4774 dan skor determinasi terbesar yaitu 0.8726.
 
-Referensi:
+## Referensi
 [[1]](https://doi.org/10.1155/2022/7969220) Ahmed I. Taloba, Rasha M. Abd El-Aziz, Huda M. Alshanbari, Abdal-Aziz H. El-Bagoury, "Estimation and Prediction of Hospitalization and Medical Care Costs Using Regression in Machine Learning", Journal of Healthcare Engineering, vol. 2022, 2022.
 
 [[2]](https://doi.org/10.1371/journal.pone.0279540) Langenberger B, Schulte T, Groene O. "The application of machine learning to predict high-cost patients: A performance-comparison of different models using healthcare claims data," PLoS ONE, vol. 18(1), 2023.
