@@ -49,7 +49,7 @@ Tabel 1. Informasi variabel pada dataset
 | charges | biaya pengobatan individu yang ditanggung oleh asuransi kesehatan |
 
 Gambar 1. Korelasi antar variabel
-![alt text](https://github.com/roissyahf/dicoding-submission/blob/main/MLT-Project-1/plots/korelasi.png?raw=true)
+![alt text](https://github.com/roissyahf/dicoding-submission/blob/main/MLT-Project-1/plots/korelasi.png)
 
 Dataset sudah bebas dari nilang kosong dan juga inconsistent value, hanya terdapat 1 nilai duplikat yang kemudian dihilangkan. Setelah melalui tahapan Data Cleaning, dilakukan eksplorasi lebih dalam lagi salah satunya dengan melihat korelasi antar variabel. Berdasarkan Gambar 1, dapat diamati hubungan antar variabel lemah dengan skor korelasi kurang dari 0.3. Variabel charges dan smoker memiliki skor korelasi tertinggi di antara variabel lainnya, yaitu 0.79 yang menandakan adanya hubungan positif kuat antara keduanya. Pemilihan age, sex, bmi, children, dan smoker sebagai variabel prediktor juga mengacu pada penelitian yang dilakukan oleh [2], hal pembedanya pada proyek ini terdapat 1 tambahan variabel prediktor yaitu wilayah.
 
