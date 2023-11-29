@@ -55,8 +55,10 @@ Dataset sudah bebas dari nilang kosong dan juga inconsistent value, hanya terdap
 
 ## Exploratory Data Analysis (EDA)
 Gambar 2. Visualisasi bagian I
+![alt text](https://github.com/roissyahf/dicoding-submission/blob/main/MLT-Project-1/plots/bagian_1.png)
 
 Gambar 3. Visualisasi bagian II
+![alt text](https://github.com/roissyahf/dicoding-submission/blob/main/MLT-Project-1/plots/bagian_2.png)
 
 Berdasarkan visualisasi pada Gambar 2 dan 3, diperoleh temuan:
 1. Usia pasien cukup menyebar rata mulai dari 18 hingga lebih dari 60 tahun. Namun pasien dengan usia 18 tahun berjumlah 160 yang membuat distribusi usia pasien menceng ke kanan.
@@ -73,7 +75,7 @@ Temuan tersebut menghasilkan kesimpulan, variabel smoker, dan BMI berpengaruh te
 - Lalu dilakukan pemisahan antara X yang merupakan variabel prediktor: age, sex, bmi, children, smoker, region dan y yang merupakan variabel target: charges.
 
 Gambar 4. Distribusi variabel charges sebelum dan sesudah transformasi log
-
+![alt text](https://github.com/roissyahf/dicoding-submission/blob/main/MLT-Project-1/plots/before_after_log.png)
 
 - Berdasarkan Gambar 4, terlihat variabel charges menceng ke kanan maka perlu dilakukan transformasi logaritma untuk memperbaiki distribusi data. Transformasi logaritma dapat membantu untuk mengurangi dampak nilai-nilai outlier tersebut, sehingga model dapat bekerja lebih baik. 
 - Memisahkan data ke dalam training set untuk melatih model, dan test set untuk mengevaluasi model dengan rasio 0.75:0.25
@@ -93,7 +95,7 @@ Berdasarkan Tabel 2, Gradient Boosting Regressor (GBR) menjadi model terbaik kar
 Dari 6 variabel prediktor yang digunakan, dengan menggunakan feature importance pada model GBR ditemukan bahwasannya variabel smoker paling berpengaruh terhadap model sengan skor importance sebesar 0.494253, lalu disusul oleh variabel age dengan skor importance 0.387697. Variabel bmi, children, region, sex hanya berkontribusi kecil dalam memprediksi biaya pengobatan sebagaimana yang dapat diamati pada Gambar 5.
 
 Gambar 5. Feature Importance pada model Gradient Boosting Regressor
-
+![alt text](https://github.com/roissyahf/dicoding-submission/blob/main/MLT-Project-1/plots/importance.png)
 
 Selanjutnya, dilakukan hyperparameter tuning terhadap model Gradient Boosting Regressor dengan memanfaatkan GridSearchCV untuk mencari parameter terbaik dari serangkaian kombinasi yang dicoba dari dictionary berikut:
 ```
