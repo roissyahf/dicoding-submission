@@ -49,16 +49,16 @@ Tabel 1. Informasi variabel pada dataset
 | charges | biaya pengobatan individu yang ditanggung oleh asuransi kesehatan |
 
 Gambar 1. Korelasi antar variabel
-![pict 1](/plots/korelasi.png)
+![korelasi](https://github.com/roissyahf/dicoding-submission/assets/94748266/9a5b42c8-cd41-4bd7-98ce-0822806d81b9)
 
 Dataset sudah bebas dari nilang kosong dan juga inconsistent value, hanya terdapat 1 nilai duplikat yang kemudian dihilangkan. Setelah melalui tahapan Data Cleaning, dilakukan eksplorasi lebih dalam lagi salah satunya dengan melihat korelasi antar variabel. Berdasarkan Gambar 1, dapat diamati hubungan antar variabel lemah dengan skor korelasi kurang dari 0.3. Variabel charges dan smoker memiliki skor korelasi tertinggi di antara variabel lainnya, yaitu 0.79 yang menandakan adanya hubungan positif kuat antara keduanya. Pemilihan age, sex, bmi, children, dan smoker sebagai variabel prediktor juga mengacu pada penelitian yang dilakukan oleh [1], hal pembedanya pada proyek ini terdapat 1 tambahan variabel prediktor yaitu wilayah.
 
 ## Exploratory Data Analysis (EDA)
 Gambar 2. Visualisasi bagian I
-![alt text](https://github.com/roissyahf/dicoding-submission/blob/main/MLT-Project-1/plots/bagian_1.png)
+![bagian_1](https://github.com/roissyahf/dicoding-submission/assets/94748266/d464516d-3e3d-427e-9ecd-6a5ca1e625b3)
 
 Gambar 3. Visualisasi bagian II
-![alt text](https://github.com/roissyahf/dicoding-submission/blob/main/MLT-Project-1/plots/bagian_2.png)
+![bagian_2](https://github.com/roissyahf/dicoding-submission/assets/94748266/722975c9-9e48-48f9-a080-f93133ce6239)
 
 Berdasarkan visualisasi pada Gambar 2 dan 3, diperoleh temuan:
 1. Usia pasien cukup menyebar rata mulai dari 18 hingga lebih dari 60 tahun. Namun pasien dengan usia 18 tahun berjumlah 160 yang membuat distribusi usia pasien menceng ke kanan.
@@ -75,7 +75,7 @@ Temuan tersebut menghasilkan kesimpulan, variabel smoker, dan BMI berpengaruh te
 - Lalu dilakukan pemisahan antara X yang merupakan variabel prediktor: age, sex, bmi, children, smoker, region dan y yang merupakan variabel target: charges.
 
 Gambar 4. Distribusi variabel charges sebelum dan sesudah transformasi log
-![alt text](https://github.com/roissyahf/dicoding-submission/blob/main/MLT-Project-1/plots/before_after_log.png)
+![before_after_log](https://github.com/roissyahf/dicoding-submission/assets/94748266/a8be1a4d-efbc-4a85-b512-6f70955fb1d2)
 
 - Berdasarkan Gambar 4, terlihat variabel charges menceng ke kanan maka perlu dilakukan transformasi logaritma untuk memperbaiki distribusi data. Transformasi logaritma dapat membantu untuk mengurangi dampak nilai-nilai outlier tersebut, sehingga model dapat bekerja lebih baik. 
 - Memisahkan data ke dalam training set untuk melatih model, dan test set untuk mengevaluasi model dengan rasio 0.75:0.25
@@ -95,7 +95,7 @@ Berdasarkan Tabel 2, Gradient Boosting Regressor (GBR) menjadi model terbaik kar
 Dari 6 variabel prediktor yang digunakan, dengan menggunakan feature importance pada model GBR ditemukan bahwasannya variabel smoker paling berpengaruh terhadap model sengan skor importance sebesar 0.494253, lalu disusul oleh variabel age dengan skor importance 0.387697. Variabel bmi, children, region, sex hanya berkontribusi kecil dalam memprediksi biaya pengobatan sebagaimana yang dapat diamati pada Gambar 5.
 
 Gambar 5. Feature Importance pada model Gradient Boosting Regressor
-![alt text](https://github.com/roissyahf/dicoding-submission/blob/main/MLT-Project-1/plots/importance.png)
+![importance](https://github.com/roissyahf/dicoding-submission/assets/94748266/3c824725-0af0-41e7-9d34-25ac8f4c091e)
 
 Selanjutnya, dilakukan hyperparameter tuning terhadap model Gradient Boosting Regressor dengan memanfaatkan GridSearchCV untuk mencari parameter terbaik dari serangkaian kombinasi yang dicoba dari dictionary berikut:
 ```
