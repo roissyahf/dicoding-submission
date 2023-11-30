@@ -3,7 +3,7 @@
 ## Domain Proyek
 Biaya layanan kesehatan yang meningkat pesat telah menjadi tantangan besar di beberapa negara, bukti yang ada menunjukkan bahwa biaya perawatan kesehatan telah terakumulasi pada sejumlah besar BMI [1]. Faktor-faktor demografi pasien seperti usia, jenis kelamin, merokok atau tidak, wilayah, tanggungan anak, dan BMI dapat memengaruhi biaya tanggungan asuransi kesehatan. Oleh karena itu, diperlukan model yang dapat memprediksi biaya tersebut berdasarkan faktor-faktor demografi pasien menjadi penting untuk dikembangkan. Dengan mengetahui prediksi biaya pengobatan dapat membantu agen asuransi untuk menghitung premi asuransi yang lebih akurat, sehingga dapat meningkatkan kepuasan pelanggan dan mengurangi risiko kerugian. Prediksi juga membantu rumah sakit untuk memperkirakan kebutuhan dana dan sumber daya untuk perawatan pasien, sehingga dapat meningkatkan efisiensi dan kualitas layanan.
 
-Penelitian sebelumnya bertujuan untuk memprediksi pasien mana yang menghabiskan biaya pengobatan besar di tahun berikutnya dengan membandingkan algortima *random forest* (RF), *gradient boosting machine* (GBM), *artificial neural network* (ANN) dan *logistic regression* (LR). Adapun data yang digunakan berupa klaim dana sakit dan biaya yang dikeluarkan secara rutin pada tahun 2016, 2017, dan 2018 [2]. Penelitian lainnya berupaya ntuk membangun model regresi linear guna memprediksi berapa besar biaya pengobatan yang harus dikeluarkan oleh asuransi jika diketahui variabel-variabel seperti jenis kelamin, BMI, merokok atau tidak, usia, serta jumlah anak yang ditanggung. Peneliti menyebutkan penting untuk memprediksi biaya pengobatan tersebut karena membantu untuk menciptakan strategi pencegahan obesitas yang hemat biaya, sebagaimana dalam penelitian terpisah lainnya disebutkan BMI, penuaan, merokok, dan faktor lainnya semuanya terkait dengan biaya perawatan medis pribadi yang lebih besar [1]. 
+Penelitian sebelumnya bertujuan untuk memprediksi pasien mana yang menghabiskan biaya pengobatan besar di tahun berikutnya dengan membandingkan algortima *random forest* (RF), *gradient boosting machine* (GBM), *artificial neural network* (ANN) dan *logistic regression* (LR). Adapun data yang digunakan berupa klaim dana sakit dan biaya yang dikeluarkan secara rutin pada tahun 2016, 2017, dan 2018 [3]. Penelitian lainnya berupaya ntuk membangun model regresi linear guna memprediksi berapa besar biaya pengobatan yang harus dikeluarkan oleh asuransi jika diketahui variabel-variabel seperti jenis kelamin, BMI, merokok atau tidak, usia, serta jumlah anak yang ditanggung. Peneliti menyebutkan penting untuk memprediksi biaya pengobatan tersebut karena membantu untuk menciptakan strategi pencegahan obesitas yang hemat biaya, sebagaimana dalam penelitian terpisah lainnya disebutkan BMI, penuaan, merokok, dan faktor lainnya semuanya terkait dengan biaya perawatan medis pribadi yang lebih besar [1]. 
 
 ## Business Understanding
 Biaya pengobatan yang dikeluarkan oleh asuransi kesehatan merupakan salah satu faktor yang penting untuk dipertimbangkan dalam menentukan premi yang harus dibayarkan oleh nasabah. Oleh karena itu, penting untuk memiliki model yang akurat dalam memprediksi besar biaya pengobatan tersebut. Model regresi yang dikembangkan dalam proyek ini akan menggunakan 6 variabel prediktor, yaitu: jenis kelamin, BMI, merokok atau tidak, usia, jumlah anak yang ditanggung, wilayah asal.
@@ -81,7 +81,11 @@ Gambar 4. Distribusi variabel charges sebelum dan sesudah transformasi log
 - Memisahkan data ke dalam training set untuk melatih model, dan test set untuk mengevaluasi model dengan rasio 0.75:0.25
 
 ## Model Development
-Terdapat 3 model yang akan dibandingkan yaitu *Gradient Boosting Regressor*, *Random Forest Regressor*, dan *Linear Regression* menggunakan *default parameter*. Mulanya akan dilakukan *cross validation* dengan *k-fold* sebanyak 5 (cv=5), lalu dilakukan model training menggunakan *data training*. Parameter yang digunakan pada *baseline model* terlampir pada Tabel 2.
+Terdapat 3 model yang akan dibandingkan yaitu *Gradient Boosting Regressor*, *Random Forest Regressor*, dan *Linear Regression*. *Gradient boosting* adalah teknik *supervised learning* yang menggabungkan beberapa model lemah seperti *Decision Tree* yang dangkal menjadi model yang kuat. Algoritma dimulai dari menghasilkan pohon klasifikasi awal dan terus menyesuaikan pohon baru dengan meminimalisir fungsi kerugian [4]. Dalam setiap iterasi *Gradient Boosting* akan menambahkan *weak learner* baru dan menghitung kesalahan prediksi untuk melakukan koreksi. *Gradient boosting* memerlukan konfigurasi *hyperparameter* untuk memperoleh hasil prediksi yang optimal. Salah satu kelebihan *Gradient Boosting* yaitu dapat diterapkan pada berbagai jenis data tanpa memerlukan asumsi yang ketat, contohnya homoskedastisitas.
+
+*Random Forest* adalah model *supervised learning* yang menggabungkan beberapa *decision trees*. *Bagging* menjadi konsep dasar dibangunnya *Random Forest*, sampel observasi dari dataset orisinal dikumpulkan secara acak ke dalam suatu *bag* atau penampung menggunakan teknik pengambilan sampel dengan pengembalian [6]. Algoritma ini cocok digunakan karena dinilai cukup efisien secara komputasional, dan memiliki kemampuan untuk memilih variabel mana yang akan digunakan dalam prediksi [5]. *Multiple Linear Regression* adalah suatu model regresi linear yang melibatkan lebih dari satu variable bebas atau prediktor [2]. Model ini memiliki tingkat akurasi yang tinggi dan cocok digunakan pada penelitian yang memiliki variabel independen lebih dari satu [7].
+
+Mulanya akan dilakukan *cross validation* dengan *k-fold* sebanyak 5 (cv=5), lalu dilakukan model training menggunakan *data training*. Parameter yang digunakan pada *baseline model* terlampir pada Tabel 2.
 
 Tabel 2. Baseline model beserta parameternya
 | **Nama model** | **Parameter** |
@@ -89,11 +93,6 @@ Tabel 2. Baseline model beserta parameternya
 | Gradient Boosting Regressor | learning_rate=0.1, n_estimators=100, max_depth=3, random_state=42 |
 | Random Forest Regressor | n_estimators=100, random_state=42 |
 | Linear Regression | - |
-
-- TO DO 1: EDIT CARA KERJA MODEL
-*Gradient Boosting Regressor* menggabungkan beberapa model lemah seperti *Decision Tree* yang dangkal menjadi model yang kuat. Dalam setiap iterasi *Gradient Boosting* akan menambahkan *weak learner* baru dan menghitung kesalahan prediksi untuk melakukan koreksi. Nilai residu akan diperbaiki dengan mengurangi nilai target dengan hasil prediksi, lalu menambahkan *weak learner* baru untuk menyelesaikan masalah *residual error*. Salah satu kelebihan *Gradient Boosting* yaitu dapat diterapkan pada berbagai jenis data tanpa memerlukan asumsi yang ketat, contohnya homoskedastisitas.
-*Random Forest Regressor* dibangun dari kumpulan pohon keputusan yang dilatih dengan mengombinasikan model pembelajaran untuk meningkatkan akurasi model.
-*Linear Regression*
 
 ## Evaluation
 Tabel 3. Evaluasi performa model dengan cv = 5
@@ -105,7 +104,7 @@ Tabel 3. Evaluasi performa model dengan cv = 5
 
 Berdasarkan Tabel 3, *Gradient Boosting Regressor* (GBR) menjadi model terbaik karena memiliki RMSE dan MSE terkecil di antara kedua model lainnya. Di samping itu, GBR juga menghasilkan skor koefisien determinasi (R^2) tertinggi di antara kedua model lainnya, yaitu sebesar 0.8726. GBR mampu bekerja lebih baik daripada *Random Forest Regressor* (RFR) karena GBR mampu mengoreksi error lalu melakukan perbaikan secara otomatis, GBR juga mampu mengenali pola kompleks dalam data.
 
-Selanjutnya, dilakukan *hyperparameter tuning* terhadap model Gradient Boosting Regressor dengan memanfaatkan GridSearchCV untuk mencari parameter terbaik dari serangkaian kombinasi yang dicoba. Setelah itu, dilakukan pelatihan ulang kembali menggunakan parameter terbaik. Diperoleh hasil RMSE mengalami penurunan menjadi 0.4774 dengan menggunakan pengaturan parameter sebagai berikut:
+Selanjutnya, dilakukan *hyperparameter tuning* terhadap model *Gradient Boosting Regressor* dengan memanfaatkan GridSearchCV untuk mencari parameter terbaik dari serangkaian kombinasi yang dicoba. Setelah itu, dilakukan pelatihan ulang kembali menggunakan parameter terbaik. Diperoleh hasil RMSE mengalami penurunan menjadi 0.4774 dengan menggunakan pengaturan parameter sebagai berikut:
 ```
 Best Hyperparameters: {
     'learning_rate': 0.1,
@@ -117,11 +116,11 @@ Best Hyperparameters: {
 ```
 - TO DO 2: Nambah rumus
 
-RMSE (*Root Mean Square Error*) menjadi metrik utama yang digunakan untuk membandingkan performa model. RMSE menghitung kesalahan prediksi dengan mengkuadratkan selisih nilai aktual (y_test_log) dengan nilai prediksi (y_pred), lalu dibagi dengan banyaknya data pada x_test, dan hasilnya diakarkan. Semakin kecil skor RMSE, semakin baik performa model karena nilai prediksi yang dihasilkan semakin mendekati nilai aktual. Digunakan juga Mean Square Error (MSE) dan koefisien determinasi (R^2) dalam mengevaluasi performa model. Koefisien determinasi memiliki rentang nilai antara 0 hingga 1 yang mengukur kemampuan variabel-variabel independen dalam memprediksi variabel dependen. 
+RMSE (*Root Mean Square Error*) menjadi metrik utama yang digunakan untuk membandingkan performa model. RMSE menghitung kesalahan prediksi dengan mengkuadratkan selisih nilai aktual (y_test_log) dengan nilai prediksi (y_pred), lalu dibagi dengan banyaknya data pada x_test, dan hasilnya diakarkan sebagaimana yang tercantum dalam formula berikut \[ RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2} \]. Semakin kecil skor RMSE, semakin baik performa model karena nilai prediksi yang dihasilkan semakin mendekati nilai aktual. Digunakan juga Mean Square Error (MSE) dengan formula \[ MSE = \frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2 \] dan koefisien determinasi (R^2) dengan formula \[ R^2 = 1 - \frac{SS_{\text{res}}}{SS_{\text{tot}}} \] dalam mengevaluasi performa model. Koefisien determinasi memiliki rentang nilai antara 0 hingga 1 yang mengukur kemampuan variabel-variabel independen dalam memprediksi variabel dependen. Nilai R^2 yang kecil berarti kemampuan variabel-variabel independen dalam menjelaskan variasi variabel dependen amat terbatas, sebaliknya jika nilai yang mendekati 1 berarti variabel-variabel independen memberikan hampir semua informasi yang dibutuhkan untuk memprediksi variabel-variabel dependen.
 
-Setelah pemilihan model terbaik dari ketiga model yang diusulkan, diperoleh model Gradient Boosting Regressor (GBR) keluar sebagai model terbaik dengan perolehan skor RMSE dan MSE terkecil di antara kedua model lainnya, koefisien determinasinya juga paling besar sebagaimana yang tercantum pada Tabel 2. Selanjutnya, dilakukan hyperparameter tuning pada model GBR tersebut, hasilnya skor RMSE turun dari yang semula 0.4882 menjadi 0.4774. Koefisien determinasi juga mengalami kenaikan, dari 0.8726 menjadi 0.8782. Dapat diinterpretasikan, model GBR hasil tuning semakin baik dalam memprediksi biaya pengobatan yang dibuktikan dengan penurunan skor RMSE serta kenaikan koefisien determinasi. 
+Setelah pemilihan model terbaik dari ketiga model yang diusulkan, diperoleh model *Gradient Boosting Regressor* (GBR) keluar sebagai model terbaik dengan perolehan skor RMSE dan MSE terkecil di antara kedua model lainnya, koefisien determinasinya juga paling besar sebagaimana yang tercantum pada Tabel 2. Selanjutnya, dilakukan *hyperparameter tuning* pada model GBR tersebut, hasilnya skor RMSE turun dari yang semula 0.4882 menjadi 0.4774. Koefisien determinasi juga mengalami kenaikan, dari 0.8726 menjadi 0.8782. Dapat diinterpretasikan, model GBR hasil tuning semakin baik dalam memprediksi biaya pengobatan yang dibuktikan dengan penurunan skor RMSE serta kenaikan koefisien determinasi. 
 
-Dari 6 variabel prediktor yang digunakan, dengan menggunakan feature importance pada model GBR ditemukan bahwasannya variabel smoker paling berpengaruh terhadap model sengan skor importance sebesar 0.494253, lalu disusul oleh variabel age dengan skor importance 0.387697. Variabel bmi, children, region, sex hanya berkontribusi kecil dalam memprediksi biaya pengobatan sebagaimana yang dapat diamati pada Gambar 5.
+Dari 6 variabel prediktor yang digunakan, dengan menggunakan *feature importance* pada model GBR ditemukan bahwasannya variabel smoker paling berpengaruh terhadap model sengan skor *importance* sebesar 0.494253, lalu disusul oleh variabel age dengan skor *importance* 0.387697. Variabel bmi, children, region, sex hanya berkontribusi kecil dalam memprediksi biaya pengobatan sebagaimana yang dapat diamati pada Gambar 5.
 
 Gambar 5. Feature Importance pada model Gradient Boosting Regressor
 ![importance](https://github.com/roissyahf/dicoding-submission/assets/94748266/3c824725-0af0-41e7-9d34-25ac8f4c091e)
@@ -133,4 +132,14 @@ Gambar 5. Feature Importance pada model Gradient Boosting Regressor
 ## Referensi
 [[1]](https://doi.org/10.1155/2022/7969220) Ahmed I. Taloba, Rasha M. Abd El-Aziz, Huda M. Alshanbari, Abdal-Aziz H. El-Bagoury, "Estimation and Prediction of Hospitalization and Medical Care Costs Using Regression in Machine Learning", Journal of Healthcare Engineering, vol. 2022, 2022.
 
-[[2]](https://doi.org/10.1371/journal.pone.0279540) Langenberger B, Schulte T, Groene O. "The application of machine learning to predict high-cost patients: A performance-comparison of different models using healthcare claims data," PLoS ONE, vol. 18(1), 2023.
+[2] A. L. A. Febriyanto, H. Lestiawan, and W. Wicaksono, “Analisa Prakiraan Cuaca dengan Parameter Suhu, Kelembaban, Tekanan Udara, dan Kecepatan Angin Menggunakan Regresi Linear Berganda,” JOINS (Journal of Information System), vol. 5, no. 1, pp. 10–17, 2020.
+
+[[3]](https://doi.org/10.1371/journal.pone.0279540) Langenberger B, Schulte T, Groene O, "The application of machine learning to predict high-cost patients: A performance-comparison of different models using healthcare claims data," PLoS ONE, vol. 18(1), 2023.
+
+[4] Natekin, A. Knoll, A, "Gradient boosting machines, a tutorial", Frontiers in Neurorobotics, 2013.
+
+[5] Oshiro, T. M., Perez, P. S., & Baranauskas, J. A, "How many trees in a random forest? International Workshop on Machine Learning and Data Mining in Pattern Recognition," 154– 168, 2012.
+
+[6] Pambudi, H. K., Kusuma, P. G. A., Yulianti, F., Julian, K. A, "Prediksi Status Pengiriman Barang Menggunakan Metode Machine Learning," Jurnal Ilmiah Teknologi Informasi Terapan. Vol. 6, No.2 (100-109), 2020.
+
+[7] Y. R. N. S. Utomo, and Sartikha, “Prediksi Kelayakan Operasional Mesin Rivet Menggunakan Regresi Linear Berganda,” Jurnal Sustainable: Jurnal Hasil Penelitian dan Industri Terapan, vol. 10, no. 01, pp. 10– 15, 2021.
