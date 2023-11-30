@@ -104,7 +104,11 @@ Tabel 3. Evaluasi performa model dengan cv = 5
 
 Berdasarkan Tabel 3, *Gradient Boosting Regressor* (GBR) menjadi model terbaik karena memiliki RMSE dan MSE terkecil di antara kedua model lainnya. Di samping itu, GBR juga menghasilkan skor koefisien determinasi (R^2) tertinggi di antara kedua model lainnya, yaitu sebesar 0.8726. GBR mampu bekerja lebih baik daripada *Random Forest Regressor* (RFR) karena GBR mampu mengoreksi error lalu melakukan perbaikan secara otomatis, GBR juga mampu mengenali pola kompleks dalam data.
 
-Selanjutnya, dilakukan *hyperparameter tuning* terhadap model *Gradient Boosting Regressor* dengan memanfaatkan GridSearchCV untuk mencari parameter terbaik dari serangkaian kombinasi yang dicoba. Setelah itu, dilakukan pelatihan ulang kembali menggunakan parameter terbaik. Diperoleh hasil RMSE mengalami penurunan menjadi 0.4774 dengan menggunakan pengaturan parameter sebagai berikut:
+Selanjutnya, dilakukan *hyperparameter tuning* terhadap model *Gradient Boosting Regressor* dengan memanfaatkan GridSearchCV untuk mencari parameter terbaik dari serangkaian kombinasi yang dicoba. Setelah itu, dilakukan pelatihan ulang kembali menggunakan parameter terbaik. Diperoleh hasil sebagaimana yang terlampir pada Tabel 4 berikut.
+
+Tabel 4. 
+
+RMSE mengalami penurunan menjadi 0.4774 dengan menggunakan pengaturan parameter sebagai berikut:
 ```
 Best Hyperparameters: {
     'learning_rate': 0.1,
@@ -116,7 +120,15 @@ Best Hyperparameters: {
 ```
 - TO DO 2: Nambah rumus
 
-RMSE (*Root Mean Square Error*) menjadi metrik utama yang digunakan untuk membandingkan performa model. RMSE menghitung kesalahan prediksi dengan mengkuadratkan selisih nilai aktual (y_test_log) dengan nilai prediksi (y_pred), lalu dibagi dengan banyaknya data pada x_test, dan hasilnya diakarkan sebagaimana yang tercantum dalam formula berikut $`RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}`$. Semakin kecil skor RMSE, semakin baik performa model karena nilai prediksi yang dihasilkan semakin mendekati nilai aktual. Digunakan juga Mean Square Error (MSE) dengan formula $`MSE = \frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2`$ dan koefisien determinasi (R^2) dengan formula $`R^2 = 1 - \frac{SS_{\text{res}}}{SS_{\text{tot}}}`$ dalam mengevaluasi performa model. Koefisien determinasi memiliki rentang nilai antara 0 hingga 1 yang mengukur kemampuan variabel-variabel independen dalam memprediksi variabel dependen. Nilai R^2 yang kecil berarti kemampuan variabel-variabel independen dalam menjelaskan variasi variabel dependen amat terbatas, sebaliknya jika nilai yang mendekati 1 berarti variabel-variabel independen memberikan hampir semua informasi yang dibutuhkan untuk memprediksi variabel-variabel dependen.
+RMSE (*Root Mean Square Error*) menjadi metrik utama yang digunakan untuk membandingkan performa model. RMSE menghitung kesalahan prediksi dengan mengkuadratkan selisih nilai aktual (y_test_log) dengan nilai prediksi (y_pred), lalu dibagi dengan banyaknya data pada x_test, dan hasilnya diakarkan sebagaimana yang tercantum dalam formula berikut
+```math
+$`RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}`$
+```
+Semakin kecil skor RMSE, semakin baik performa model karena nilai prediksi yang dihasilkan semakin mendekati nilai aktual. Digunakan juga Mean Square Error (MSE) dengan formula
+$`MSE = \frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2`$
+dan koefisien determinasi (R^2) dengan formula
+$`R^2 = 1 - \frac{SS_{\text{res}}}{SS_{\text{tot}}}`$ dalam mengevaluasi performa model.
+Koefisien determinasi memiliki rentang nilai antara 0 hingga 1 yang mengukur kemampuan variabel-variabel independen dalam memprediksi variabel dependen. Nilai R^2 yang kecil berarti kemampuan variabel-variabel independen dalam menjelaskan variasi variabel dependen amat terbatas, sebaliknya jika nilai yang mendekati 1 berarti variabel-variabel independen memberikan hampir semua informasi yang dibutuhkan untuk memprediksi variabel-variabel dependen.
 
 Setelah pemilihan model terbaik dari ketiga model yang diusulkan, diperoleh model *Gradient Boosting Regressor* (GBR) keluar sebagai model terbaik dengan perolehan skor RMSE dan MSE terkecil di antara kedua model lainnya, koefisien determinasinya juga paling besar sebagaimana yang tercantum pada Tabel 2. Selanjutnya, dilakukan *hyperparameter tuning* pada model GBR tersebut, hasilnya skor RMSE turun dari yang semula 0.4882 menjadi 0.4774. Koefisien determinasi juga mengalami kenaikan, dari 0.8726 menjadi 0.8782. Dapat diinterpretasikan, model GBR hasil tuning semakin baik dalam memprediksi biaya pengobatan yang dibuktikan dengan penurunan skor RMSE serta kenaikan koefisien determinasi. 
 
