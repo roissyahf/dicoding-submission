@@ -103,7 +103,7 @@ Digunakan juga *Mean Square Error* (MSE) dengan formula
 ```math
 MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 ```
-dan koefisien determinasi (R^2) dengan formula
+dan koefisien determinasi ($R^2$) dengan formula
 ```math
 R^2 = 1 - \frac{SS_{\text{res}}}{SS_{\text{tot}}}
 ```
