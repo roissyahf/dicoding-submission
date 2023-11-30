@@ -51,14 +51,14 @@ Tabel 1. Informasi variabel pada dataset
 Gambar 1. Korelasi antar variabel
 ![korelasi](https://github.com/roissyahf/dicoding-submission/assets/94748266/9a5b42c8-cd41-4bd7-98ce-0822806d81b9)
 
-Dataset sudah bebas dari nilang kosong dan juga inconsistent value, hanya terdapat 1 nilai duplikat yang kemudian dihilangkan. Setelah melalui tahapan Data Cleaning, dilakukan eksplorasi lebih dalam lagi salah satunya dengan melihat korelasi antar variabel. Berdasarkan Gambar 1, dapat diamati hubungan antar variabel lemah dengan skor korelasi kurang dari 0.3. Variabel charges dan smoker memiliki skor korelasi tertinggi di antara variabel lainnya, yaitu 0.79 yang menandakan adanya hubungan positif kuat antara keduanya. Pemilihan age, sex, bmi, children, dan smoker sebagai variabel prediktor juga mengacu pada penelitian yang dilakukan oleh [1], hal pembedanya pada proyek ini terdapat 1 tambahan variabel prediktor yaitu wilayah.
+Dataset sudah bebas dari nilang kosong dan juga *inconsistent value*, hanya terdapat 1 nilai duplikat yang kemudian dihilangkan. Setelah melalui tahapan *Data Cleaning*, dilakukan eksplorasi lebih dalam lagi salah satunya dengan melihat korelasi antar variabel. Berdasarkan Gambar 1, dapat diamati hubungan antar variabel lemah dengan skor korelasi kurang dari 0.3. Variabel charges dan smoker memiliki skor korelasi tertinggi di antara variabel lainnya, yaitu 0.79 yang menandakan adanya hubungan positif kuat antara keduanya. Pemilihan age, sex, bmi, children, dan smoker sebagai variabel prediktor juga mengacu pada penelitian yang dilakukan oleh [1], hal pembedanya pada proyek ini terdapat 1 tambahan variabel prediktor yaitu wilayah.
 
 ## Exploratory Data Analysis (EDA)
 Gambar 2. Visualisasi bagian I
-![bagian_1](https://github.com/roissyahf/dicoding-submission/assets/94748266/d464516d-3e3d-427e-9ecd-6a5ca1e625b3)
+![1](https://github.com/roissyahf/dicoding-submission/assets/94748266/6ed02fe4-2387-4d46-8599-ee11d3be6a79)
 
 Gambar 3. Visualisasi bagian II
-![bagian_2](https://github.com/roissyahf/dicoding-submission/assets/94748266/722975c9-9e48-48f9-a080-f93133ce6239)
+![2](https://github.com/roissyahf/dicoding-submission/assets/94748266/a2899a18-0a2a-4872-9305-2b122a256ffd)
 
 Berdasarkan visualisasi pada Gambar 2 dan 3, diperoleh temuan:
 1. Usia pasien cukup menyebar rata mulai dari 18 hingga lebih dari 60 tahun. Namun pasien dengan usia 18 tahun berjumlah 160 yang membuat distribusi usia pasien menceng ke kanan.
@@ -101,29 +101,29 @@ RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
 ```
 Digunakan juga *Mean Square Error* (MSE) dengan formula
 ```math
-MSE = \frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2
+MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 ```
 dan koefisien determinasi (R^2) dengan formula
 ```math
 R^2 = 1 - \frac{SS_{\text{res}}}{SS_{\text{tot}}}
 ```
-Koefisien determinasi memiliki rentang nilai antara 0 hingga 1 yang mengukur kemampuan variabel-variabel independen dalam memprediksi variabel dependen. Nilai R^2 yang kecil berarti kemampuan variabel-variabel independen dalam menjelaskan variasi dependen amat terbatas, sebaliknya jika nilainya mendekati 1 berarti variabel-variabel independen memberikan hampir semua informasi yang dibutuhkan untuk memprediksi variabel-variabel dependen.
+Koefisien determinasi memiliki rentang nilai antara 0 hingga 1 yang mengukur kemampuan variabel-variabel independen dalam memprediksi variabel dependen. Nilai $R^2$ yang kecil berarti kemampuan variabel-variabel independen dalam menjelaskan variasi dependen amat terbatas, sebaliknya jika nilainya mendekati 1 berarti variabel-variabel independen memberikan hampir semua informasi yang dibutuhkan untuk memprediksi variabel-variabel dependen.
 
 Tabel 3. Evaluasi performa model dengan cv = 5
-| **Nama model** | **Rerata RMSE saat fit time** | **RMSE saat test time** | **MSE saat test time** | **R^2 saat test time** |
+| **Nama model** | **Rerata RMSE saat fit time** | **RMSE saat test time** | **MSE saat test time** | **$R^2$ saat test time** |
 | --- | --- | --- | --- | --- |
 | Gradient Boosting Regressor | 0.5379 | 0.4882 | 0.2383 | 0.8726 |
 | Random Forest Regressor | 0.5751 | 0.5507 | 0.3033 | 0.8379 |
 | Linear Regression | 0.6406 | 0.5757 | 0.3315 | 0.8228 |
 
-Berdasarkan Tabel 3, *Gradient Boosting Regressor* (GBR) menjadi model terbaik karena memiliki RMSE dan MSE terkecil di antara kedua model lainnya. Di samping itu, GBR juga menghasilkan skor koefisien determinasi (R^2) tertinggi di antara kedua model lainnya, yaitu sebesar 0.8726. GBR mampu bekerja lebih baik daripada *Random Forest Regressor* (RFR) karena GBR mampu mengoreksi error lalu melakukan perbaikan secara otomatis, GBR juga mampu mengenali pola kompleks dalam data.
+Berdasarkan Tabel 3, *Gradient Boosting Regressor* (GBR) menjadi model terbaik karena memiliki RMSE dan MSE terkecil di antara kedua model lainnya. Di samping itu, GBR juga menghasilkan skor koefisien determinasi ($R^2$) tertinggi di antara kedua model lainnya, yaitu sebesar 0.8726. GBR mampu bekerja lebih baik daripada *Random Forest Regressor* (RFR) karena GBR mampu mengoreksi error lalu melakukan perbaikan secara otomatis, GBR juga mampu mengenali pola kompleks dalam data.
 
-Selanjutnya, dilakukan *hyperparameter tuning* terhadap model *Gradient Boosting Regressor* dengan memanfaatkan GridSearchCV untuk mencari parameter terbaik dari serangkaian kombinasi yang dicoba. Setelah itu, dilakukan pelatihan ulang kembali menggunakan parameter terbaik. Diperoleh hasil sebagaimana yang terlampir pada Tabel 4 berikut. RMSE mengalami penurunan sebelum dan setelah *tuning*, dari 0.4882 menjadi 0.4789. Begitu pula dengan MSE, skornya turun dari 0.283 menjadi 0.2294. Sedangkan untuk koefisien determinasi, mengalami peningkatan dari 0.8726 menjadi 0.8774. Dapat diinterpretasikan, model GBR hasil *tuning* semakin baik dalam memprediksi biaya pengobatan yang dibuktikan dengan penurunan skor RMSE serta kenaikan koefisien determinasi. 
+Selanjutnya, dilakukan *hyperparameter tuning* terhadap model *Gradient Boosting Regressor* dengan memanfaatkan GridSearchCV untuk mencari parameter terbaik dari serangkaian kombinasi yang dicoba. Setelah itu, dilakukan pelatihan ulang kembali menggunakan parameter terbaik. Diperoleh hasil sebagaimana yang terlampir pada Tabel 4 berikut. RMSE mengalami penurunan sebelum dan setelah *tuning*, dari 0.4882 menjadi 0.4789. Begitu pula dengan MSE, skornya turun dari 0.283 menjadi 0.2294. Sedangkan untuk koefisien determinasi, mengalami peningkatan dari 0.8726 menjadi 0.8774. Dapat diinterpretasikan, model GBR hasil *tuning* semakin baik dalam memprediksi biaya pengobatan yang dibuktikan dengan penurunan skor RMSE dan MSE, serta kenaikan koefisien determinasi. 
 
 Tabel 4. Evaluasi model GBR setelah tuning
-| **Nama model** | **Parameter terbaik** | **RMSE saat test time** | **MSE saat test time** | **R^2 saat test time** |
+| **Nama model** | **Parameter terbaik** | **RMSE saat test time** | **MSE saat test time** | **$R^2$ saat test time** |
 | --- | --- | --- | --- | --- |
-| Gradient Boosting Regressor | learning_rate=0.1, max_depth=3, min_samples_leaf=4, min_samples_split=10, n_estimators=50, subsample: 0.8 | 0.4789 | 0.2294 | 0.8774 |
+| Gradient Boosting Regressor | learning_rate=0.1, max_depth=3, min_samples_leaf=4, min_samples_split=10, n_estimators=50, subsample=0.8 | 0.4789 | 0.2294 | 0.8774 |
 
 Dari 6 variabel prediktor yang digunakan, dengan menggunakan *feature importance* pada model GBR ditemukan bahwasannya variabel smoker paling berpengaruh terhadap model sengan skor *importance* sebesar 0.5011, lalu disusul oleh variabel age dengan skor *importance* 0.3939. Variabel bmi, children, region, sex hanya berkontribusi kecil dalam memprediksi biaya pengobatan sebagaimana yang dapat diamati pada Gambar 5.
 
@@ -132,7 +132,7 @@ Gambar 5. Feature Importance pada model Gradient Boosting Regressor
 
 ## Conclusion
 - Variabel smoker, age, dan bmi berkontribusi besar dalam memprediksi biaya pengobatan.
-- Gradient Boosting Regressor menjadi model terbaik dibandingkan Random Forest Regressor dan Linear Regression karena dihasilkan RMSE terkecil yaitu 0.4789 dan skor determinasi terbesar yaitu 0.8774.
+- *Gradient Boosting Regressor* menjadi model terbaik dibandingkan Random Forest Regressor dan Linear Regression karena dihasilkan RMSE terkecil yaitu 0.4789 dan skor determinasi terbesar yaitu 0.8774.
 
 ## Referensi
 [[1]](https://doi.org/10.1155/2022/7969220) Ahmed I. Taloba, Rasha M. Abd El-Aziz, Huda M. Alshanbari, Abdal-Aziz H. El-Bagoury, "Estimation and Prediction of Hospitalization and Medical Care Costs Using Regression in Machine Learning", Journal of Healthcare Engineering, vol. 2022, 2022.
